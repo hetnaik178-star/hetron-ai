@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content" />
+    <title>HETRON – AI Voice Assistant ⚡</title>
+    <meta name="description"
+        content="HETRON AI Voice Assistant — Power · Precision · Intelligence. WhatsApp, Instagram, Facebook, ChatGPT, Grok, Gemini, Google Lens, Files & more!" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ⚡ HETRON LOADING SCREEN -->
+    <div class="hetron-loader" id="hetronLoader">
+        <div class="loader-logo-wrap">
+            <div class="loader-orbit"></div>
+            <div class="loader-orbit"></div>
+            <div class="loader-icon">🎙</div>
+        </div>
+        <div class="loader-title">HETRON</div>
+        <div class="loader-subtitle">AI Voice Assistant</div>
+        <div class="loader-bar-wrap">
+            <div class="loader-bar"></div>
+        </div>
+        <div class="loader-tagline">Power · Precision · Intelligence</div>
+    </div>
+
+
+
+    <!-- 🌌 Space BG -->
+    <div class="space-bg" id="spaceBg">
+        <div class="nebula"></div>
+        <div class="nebula"></div>
+        <div class="nebula"></div>
+    </div>
+
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">🎙</div>
+                <div>
+                    <div class="sidebar-title">HETRON</div>
+                    <div class="sidebar-subtitle">AI Voice Assistant</div>
+                </div>
+            </div>
+
+            <div class="section-label">Social Apps</div>
+            <div class="quick-actions">
+                <a href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('whatsapp', event)">
+                    <div class="icon wa">💬</div>
+                    <div class="label">WhatsApp<small>Messages</small></div>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('instagram', event)">
+                    <div class="icon insta">📸</div>
+                    <div class="label">Instagram<small>Photos & Reels</small></div>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('facebook', event)">
+                    <div class="icon fb">👥</div>
+                    <div class="label">Facebook<small>Social</small></div>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('youtube', event)">
+                    <div class="icon yt">▶</div>
+                    <div class="label">YouTube<small>Videos</small></div>
+                </a>
+            </div>
+
+            <div class="section-label" style="margin-top:14px">AI Tools</div>
+            <div class="quick-actions">
+                <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('chatgpt', event)">
+                    <div class="icon gpt">✦</div>
+                    <div class="label">ChatGPT<small>OpenAI</small></div>
+                </a>
+                <a href="https://grok.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('grok', event)">
+                    <div class="icon grok">🤖</div>
+                    <div class="label">Grok<small>xAI</small></div>
+                </a>
+                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('gemini', event)">
+                    <div class="icon gemini">💎</div>
+                    <div class="label">Gemini<small>Google AI</small></div>
+                </a>
+                <a href="https://lens.google.com" target="_blank" rel="noopener noreferrer" class="action-btn" onclick="launchApp('google_lens', event)">
+                    <div class="icon lens">🔍</div>
+                    <div class="label">Google Lens<small>Visual search</small></div>
+                </a>
+            </div>
+
+            <div class="section-label" style="margin-top:14px">Features</div>
+            <div class="quick-actions">
+                <button class="action-btn" onclick="sendMessage('Open files')">
+                    <div class="icon file">📁</div>
+                    <div class="label">Open Files<small>File picker</small></div>
+                </button>
+                <button class="action-btn" onclick="searchWikipedia()">
+                    <div class="icon wiki">📚</div>
+                    <div class="label">Wikipedia<small>Search</small></div>
+                </button>
+                <button class="action-btn" onclick="clearChat()">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🗑</div>
+                    <div class="label">Clear Chat<small>Fresh start</small></div>
+                </button>
+                <button class="action-btn" onclick="sendMessage('Shutdown PC')">
+                    <div class="icon shut">⚡</div>
+                    <div class="label">Shutdown<small>Power off</small></div>
+                </button>
+            </div>
+
+            <div class="section-label" style="margin-top:14px">Tools</div>
+            <div class="quick-actions">
+                <button class="action-btn" onclick="fetchWeather()">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🌦</div>
+                    <div class="label">Live Weather<small>Open-Meteo API</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleNotes()">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">📝</div>
+                    <div class="label">Quick Notes<small>Sticky pad</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleTimer()">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">⏱</div>
+                    <div class="label">Stopwatch<small>Timer</small></div>
+                </button>
+                <button class="action-btn" onclick="sendMessage('Set alarm for 5 minutes')">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">⏰</div>
+                    <div class="label">Set Alarm<small>Voice reminder</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleMusicPlayer()">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🎵</div>
+                    <div class="label">Music Player<small>Ambient vibes</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleSysInfo()">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">📊</div>
+                    <div class="label">System Info<small>Battery &amp; status</small></div>
+                </button>
+            </div>
+
+            <div class="section-label" style="margin-top:14px">More Tools</div>
+            <div class="quick-actions">
+                <button class="action-btn" onclick="toggleCalc()" aria-label="Calculator">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🧮</div>
+                    <div class="label">Calculator<small>Scientific</small></div>
+                </button>
+                <button class="action-btn" onclick="togglePwdGen()" aria-label="Password Generator">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🔐</div>
+                    <div class="label">Password<small>Generator</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleReminders()" aria-label="Reminders">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">📅</div>
+                    <div class="label">Reminders<small>Persistent</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleTranslate()" aria-label="Translate">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🌍</div>
+                    <div class="label">Translate<small>Hindi ↔ English</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleNews()" aria-label="News">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">📰</div>
+                    <div class="label">News<small>Headlines</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleTTT()" aria-label="Tic Tac Toe">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🎮</div>
+                    <div class="label">Tic Tac Toe<small>vs AI</small></div>
+                </button>
+                <button class="action-btn" onclick="toggleQuiz()" aria-label="Quiz">
+                    <div class="icon" style="background:rgba(var(--accent-rgb),0.12);color:var(--accent)">🧠</div>
+                    <div class="label">Quiz Game<small>Test knowledge</small></div>
+                </button>
+            </div>
+
+            <div class="section-label" style="margin-top:14px">Themes</div>
+            <div class="theme-palette-wrap">
+                <div class="theme-row" id="themeRow">
+                    <!-- Theme dots rendered dynamically by JS -->
+                </div>
+                <div class="theme-cycle-area">
+                    <span class="theme-page-indicator" id="themePageIndicator">1/2</span>
+                    <button class="theme-cycle-btn" id="themeCycleBtn" onclick="cycleThemePage()" title="More palettes">
+                        <span class="cycle-icon">✦</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="voice-section">
+                <div class="section-label">Voice</div>
+                <div class="voice-row">
+                    <span class="voice-info female" id="voiceLabel">♀ Hetron Female</span>
+                    <div class="toggle active" id="voiceToggle" onclick="switchVoice()">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main">
+            <div class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                    <div class="header-orb" id="headerOrb"></div>
+                    <div class="header-status">
+                        <h2>Hetron AI</h2>
+                        <p id="statusText">● Online</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="clearChat()" title="Clear">🗑</button>
+                    <button class="header-btn" onclick="toggleListen()" title="Voice" id="headerMicBtn">🎙</button>
+                </div>
+            </div>
+
+            <!-- Weather inline card -->
+            <div class="weather-card" id="weatherCard">
+                <div class="weather-top">
+                    <span id="weatherIcon" style="font-size:28px">🌡</span>
+                    <div>
+                        <div class="weather-temp" id="weatherTemp">--°C</div>
+                        <div class="weather-desc" id="weatherDesc">Fetching weather...</div>
+                    </div>
+                </div>
+                <div class="weather-meta" id="weatherMeta"></div>
+            </div>
+
+            <div class="chat-area" id="chatArea">
+                <div class="welcome-hero" id="welcomeHero">
+                    <div class="welcome-orb-wrap">
+                        <div class="welcome-ring"></div>
+                        <div class="welcome-ring"></div>
+                        <div class="welcome-orb"></div>
+                    </div>
+                    <h1>HETRON ⚡</h1>
+                    <p>AI Voice Assistant — Say any command. Open WhatsApp, Instagram, Facebook, ChatGPT, Grok, Gemini,
+                        Google Lens & more!
+                    </p>
+                    <div class="suggestion-chips">
+                        <button class="chip" onclick="sendMessage('Hello Hetron!')">👋 Hello</button>
+                        <button class="chip" onclick="sendMessage('Weather')">🌦 Weather</button>
+                        <button class="chip" onclick="sendMessage('Motivate me')">💫 Motivate</button>
+                        <button class="chip" onclick="sendMessage('Tell me a joke')">😄 Joke</button>
+                        <button class="chip" onclick="sendMessage('Flip a coin')">🪙 Coin Flip</button>
+                        <button class="chip" onclick="sendMessage('Open WhatsApp')">💬 WhatsApp</button>
+                        <button class="chip" onclick="sendMessage('Open ChatGPT')">✦ ChatGPT</button>
+                        <button class="chip" onclick="sendMessage('Ocean theme')">🎨 Themes</button>
+                        <button class="chip" onclick="sendMessage('What can you do?')">⚡ Commands</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-row">
+                    <input type="text" id="chatInput" placeholder="Say: Open WhatsApp, Open Grok, Open Gemini... ⚡"
+                        onkeydown="if(event.key==='Enter')sendFromInput()" autocomplete="off" />
+                    <button class="input-btn mic-btn" id="micBtn" onclick="toggleListen()" title="Voice">🎙</button>
+                    <button class="input-btn send-btn" id="sendBtn" onclick="sendFromInput()" title="Send">➤</button>
+                </div>
+                <div class="input-hint">🎙 "Open Instagram" · "Open Grok" · "Open Gemini" · "Open Files" · "Shutdown PC"
+                </div>
+            </div>
+            <button class="scroll-btn" id="scrollBtn" onclick="scrollToBottom()" title="Scroll to bottom">↓</button>
+        </main>
+    </div>
+
+    <!-- Notes Panel -->
+    <div class="notes-panel" id="notesPanel">
+        <div class="notes-header">
+            <span class="notes-title">📝 Quick Notes</span>
+            <button class="notes-close" onclick="toggleNotes()">✕</button>
+        </div>
+        <textarea class="notes-textarea" id="notesText" placeholder="Type your notes here..."></textarea>
+        <div class="notes-actions">
+            <button class="notes-btn notes-save" onclick="saveNote()">💾 Save</button>
+            <button class="notes-btn notes-clear" onclick="clearNote()">🗑 Clear</button>
+        </div>
+    </div>
+
+    <!-- Timer Panel -->
+    <div class="timer-panel" id="timerPanel">
+        <button class="t-close" onclick="toggleTimer()">✕</button>
+        <div class="timer-label" id="timerLabel">Stopwatch</div>
+        <div class="timer-display" id="timerDisplay">00:00:00</div>
+        <div class="timer-btns">
+            <button class="timer-btn t-start" id="timerStartBtn" onclick="timerToggle()">▶ Start</button>
+            <button class="timer-btn t-reset" onclick="timerReset()">↺ Reset</button>
+        </div>
+    </div>
+
+    <!-- Alarm Toast -->
+    <div class="alarm-toast" id="alarmToast">⏰ <span id="alarmMsg">Alarm!</span></div>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="mp-header">
+            <span class="mp-title">🎵 Ambient Player</span>
+            <button class="mp-close" onclick="toggleMusicPlayer()">✕</button>
+        </div>
+        <div class="mp-now-playing">
+            <div class="mp-disc" id="mpDisc">🎶</div>
+            <div class="mp-info">
+                <div class="mp-song" id="mpSongName">Cosmic Dreams</div>
+                <div class="mp-artist" id="mpArtist">Hetron Ambient</div>
+            </div>
+        </div>
+        <div class="mp-progress-wrap">
+            <div class="mp-bar" id="mpBar" onclick="mpSeek(event)">
+                <div class="mp-fill" id="mpFill"></div>
+            </div>
+            <div class="mp-times">
+                <span id="mpCurrent">0:00</span>
+                <span id="mpDuration">0:00</span>
+            </div>
+        </div>
+        <div class="mp-controls">
+            <button class="mp-btn" onclick="mpPrev()" title="Previous">⏮</button>
+            <button class="mp-btn" onclick="mpRewind()" title="-10s">↺</button>
+            <button class="mp-btn play" id="mpPlayBtn" onclick="mpToggle()">&#9654;</button>
+            <button class="mp-btn" onclick="mpForward()" title="+10s">↻</button>
+            <button class="mp-btn" onclick="mpNext()" title="Next">⏭</button>
+        </div>
+        <div class="mp-volume">
+            <span class="mp-vol-icon">🔇</span>
+            <input type="range" class="mp-vol-slider" id="mpVolume" min="0" max="1" step="0.01" value="0.7"
+                oninput="mpSetVolume(this.value)">
+            <span class="mp-vol-icon">🔊</span>
+        </div>
+        <div class="mp-playlist" id="mpPlaylist"></div>
+    </div>
+
+    <!-- System Info Panel -->
+    <div class="sysinfo-panel" id="sysinfoPanel">
+        <div class="si-header">
+            <span class="si-title">📊 System Info</span>
+            <button class="si-close" onclick="toggleSysInfo()">✕</button>
+        </div>
+        <div class="si-grid">
+            <div class="si-card">
+                <div class="si-card-label">🔋 Battery</div>
+                <div class="si-card-val" id="siBattery" style="color:#34d399">--%</div>
+                <div class="si-card-sub" id="siBattStatus">Checking...</div>
+                <div class="si-battery-bar">
+                    <div class="si-battery-fill" id="siBattFill" style="width:0%;background:#34d399"></div>
+                </div>
+            </div>
+            <div class="si-card">
+                <div class="si-card-label">🌐 Network</div>
+                <div class="si-card-val" id="siNetwork" style="color:#60a5fa">--</div>
+                <div class="si-card-sub" id="siNetSub">Checking...</div>
+            </div>
+            <div class="si-card">
+                <div class="si-card-label">🕒 Local Time</div>
+                <div class="si-card-val" id="siTime" style="color:#a78bfa;font-size:16px">--:--</div>
+                <div class="si-card-sub" id="siDate">--</div>
+            </div>
+            <div class="si-card">
+                <div class="si-card-label">🖥 Platform</div>
+                <div class="si-card-val" id="siPlatform" style="color:#f472b6;font-size:14px">--</div>
+                <div class="si-card-sub" id="siLang">--</div>
+            </div>
+            <div class="si-card" style="grid-column:1/-1">
+                <div class="si-card-label"><span class="si-live-dot"></span>Connection</div>
+                <div class="si-card-val" id="siOnline" style="color:#34d399;font-size:15px">🟢 Online</div>
+                <div class="si-card-sub" id="siConnType">--</div>
+            </div>
+        </div>
+        <button class="si-refresh-btn" onclick="loadSysInfo()">🔄 Refresh</button>
+    </div>
+
+    <!-- ══════ CALCULATOR PANEL ══════ -->
+    <div class="calc-panel" id="calcPanel">
+        <div class="panel-hdr">
+            <h3>🧮 CALCULATOR</h3><button class="p-close" onclick="toggleCalc()">✕</button>
+        </div>
+        <div class="calc-display" id="calcDisplay">0</div>
+        <div class="calc-grid">
+            <button class="calc-btn fn" onclick="calcInput('sin(')">sin</button>
+            <button class="calc-btn fn" onclick="calcInput('cos(')">cos</button>
+            <button class="calc-btn fn" onclick="calcInput('tan(')">tan</button>
+            <button class="calc-btn fn" onclick="calcInput('Math.sqrt(')">√</button>
+            <button class="calc-btn fn" onclick="calcInput('Math.PI')">π</button>
+            <button class="calc-btn fn" onclick="calcInput('Math.log(')">ln</button>
+            <button class="calc-btn fn" onclick="calcInput('**2')">x²</button>
+            <button class="calc-btn op" onclick="calcClear()">AC</button>
+            <button class="calc-btn" onclick="calcInput('7')">7</button>
+            <button class="calc-btn" onclick="calcInput('8')">8</button>
+            <button class="calc-btn" onclick="calcInput('9')">9</button>
+            <button class="calc-btn op" onclick="calcInput('/')">/</button>
+            <button class="calc-btn" onclick="calcInput('4')">4</button>
+            <button class="calc-btn" onclick="calcInput('5')">5</button>
+            <button class="calc-btn" onclick="calcInput('6')">6</button>
+            <button class="calc-btn op" onclick="calcInput('*')">×</button>
+            <button class="calc-btn" onclick="calcInput('1')">1</button>
+            <button class="calc-btn" onclick="calcInput('2')">2</button>
+            <button class="calc-btn" onclick="calcInput('3')">3</button>
+            <button class="calc-btn op" onclick="calcInput('-')">−</button>
+            <button class="calc-btn" onclick="calcInput('0')">0</button>
+            <button class="calc-btn" onclick="calcInput('.')">.</button>
+            <button class="calc-btn eq" onclick="calcEval()">=</button>
+            <button class="calc-btn op" onclick="calcInput('+')">+</button>
+        </div>
+    </div>
+
+    <!-- ══════ PASSWORD GENERATOR ══════ -->
+    <div class="pwd-panel" id="pwdPanel">
+        <div class="panel-hdr">
+            <h3>🔐 PASSWORD GENERATOR</h3><button class="p-close" onclick="togglePwdGen()">✕</button>
+        </div>
+        <div class="pwd-output" id="pwdOutput">Click Generate</div>
+        <div class="pwd-options">
+            <label class="pwd-opt"><input type="range" id="pwdLen" min="8" max="64" value="16"
+                    oninput="document.getElementById('pwdLenVal').textContent=this.value"> Length: <span
+                    id="pwdLenVal">16</span></label>
+            <label class="pwd-opt"><input type="checkbox" id="pwdUpper" checked> A-Z</label>
+            <label class="pwd-opt"><input type="checkbox" id="pwdLower" checked> a-z</label>
+            <label class="pwd-opt"><input type="checkbox" id="pwdNums" checked> 0-9</label>
+            <label class="pwd-opt"><input type="checkbox" id="pwdSyms" checked> !@#$</label>
+        </div>
+        <div class="pwd-actions">
+            <button class="pwd-btn primary" onclick="generatePwd()">⚡ Generate</button>
+            <button class="pwd-btn" onclick="copyPwd()">📋 Copy</button>
+        </div>
+    </div>
+
+    <!-- ══════ REMINDERS PANEL ══════ -->
+    <div class="remind-panel" id="remindPanel">
+        <div class="panel-hdr">
+            <h3>📅 REMINDERS</h3><button class="p-close" onclick="toggleReminders()">✕</button>
+        </div>
+        <div id="remindList"></div>
+        <div class="remind-input-row">
+            <input class="remind-input" id="remindInput" placeholder="Add a reminder..." aria-label="Reminder text">
+            <button class="remind-add-btn" onclick="addReminder()">+ Add</button>
+        </div>
+    </div>
+
+    <!-- ══════ TRANSLATION PANEL ══════ -->
+    <div class="translate-panel" id="translatePanel">
+        <div class="panel-hdr">
+            <h3>🌍 TRANSLATE</h3><button class="p-close" onclick="toggleTranslate()">✕</button>
+        </div>
+        <div class="translate-langs">
+            <span id="transFrom">🇺🇸 English</span>
+            <div class="translate-swap"><button onclick="swapTransLang()" aria-label="Swap languages">⇄</button></div>
+            <span id="transTo">🇮🇳 Hindi</span>
+        </div>
+        <div class="translate-box">
+            <textarea id="transInput" placeholder="Type text to translate..." rows="3"
+                aria-label="Source text"></textarea>
+        </div>
+        <div class="pwd-actions" style="margin-top:8px">
+            <button class="pwd-btn primary" onclick="doTranslate()">🌐 Translate</button>
+            <button class="pwd-btn" onclick="speakTranslation()">🔊 Speak</button>
+        </div>
+        <div class="translate-box" style="margin-top:8px">
+            <div class="translate-result" id="transResult">Translation will appear here...</div>
+        </div>
+    </div>
+
+    <!-- ══════ NEWS PANEL ══════ -->
+    <div class="news-panel" id="newsPanel">
+        <div class="panel-hdr">
+            <h3>📰 NEWS HEADLINES</h3><button class="p-close" onclick="toggleNews()">✕</button>
+        </div>
+        <div id="newsList">
+            <div class="news-loading">Click to load latest news...</div>
+        </div>
+    </div>
+
+    <!-- ══════ TIC TAC TOE ══════ -->
+    <div class="game-panel" id="tttPanel">
+        <div class="panel-hdr">
+            <h3>🎮 TIC TAC TOE</h3><button class="p-close" onclick="toggleTTT()">✕</button>
+        </div>
+        <div class="ttt-score">
+            <span>You (X): <b id="tttScoreX">0</b></span>
+            <span>AI (O): <b id="tttScoreO">0</b></span>
+            <span>Draw: <b id="tttScoreD">0</b></span>
+        </div>
+        <div class="ttt-board" id="tttBoard"></div>
+        <div class="ttt-status" id="tttStatus">Your turn! (X)</div>
+        <button class="pwd-btn primary" onclick="resetTTT()" style="margin-top:10px;width:100%">🔄 New Game</button>
+    </div>
+
+    <!-- ══════ QUIZ GAME ══════ -->
+    <div class="quiz-panel" id="quizPanel">
+        <div class="panel-hdr">
+            <h3>🧠 QUIZ GAME</h3><button class="p-close" onclick="toggleQuiz()">✕</button>
+        </div>
+        <div class="quiz-progress">
+            <span>Question <b id="quizNum">1</b>/10</span>
+            <span>Score: <b id="quizScore">0</b></span>
+        </div>
+        <div class="quiz-bar">
+            <div class="quiz-bar-fill" id="quizBar" style="width:10%"></div>
+        </div>
+        <div class="quiz-q" id="quizQ">Loading...</div>
+        <div class="quiz-opts" id="quizOpts"></div>
+        <button class="pwd-btn" id="quizNext" onclick="nextQuizQ()" style="margin-top:12px;width:100%;display:none">Next
+            →</button>
+    </div>
+
+    <!-- 🎨 FLOATING THEME WIDGET -->
+    <div class="theme-fab" id="themeFab" onclick="toggleThemeWidget()" title="Change Theme">
+        <div class="theme-fab-glow"></div>
+        <span class="theme-fab-icon">🎨</span>
+        <div class="theme-fab-ring"></div>
+    </div>
+
+    <div class="theme-widget" id="themeWidget">
+        <div class="tw-header">
+            <span class="tw-title">✦ THEMES</span>
+            <button class="tw-close" onclick="toggleThemeWidget()">✕</button>
+        </div>
+        <div class="tw-grid" id="twGrid">
+            <!-- Theme cards rendered by JS -->
+        </div>
+    </div>
+
+    <!-- 🌌 HIGH-DENSITY PARTICLE CANVAS -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- 🌈 AURORA OVERLAY -->
+    <div class="aurora-overlay" id="auroraOverlay">
+        <div class="aurora-band aurora-1"></div>
+        <div class="aurora-band aurora-2"></div>
+        <div class="aurora-band aurora-3"></div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
