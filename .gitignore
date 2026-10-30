@@ -8,8 +8,7 @@ env/
 venv/
 ENV/
 
-# Backup folders
-_backup/
+# Temporary files
 *.bak
 *.tmp
 
